@@ -23,7 +23,7 @@ useEffect(() => {
 
   return(
     <View style={globalStyles.container}>
-      <Header title='Header Title'/>
+      <Header/>
       <Main assets={assets} setAssets={setAssets}/>
     </View>
   )

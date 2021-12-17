@@ -8,8 +8,10 @@ const AddAsset = (props) => {
     const formValues = {symbol: "", name: "", qty: "", invested: "", category: "", current: ""}
 
     const formSubmit = (values) => {
-        console.log('Form Submitted')
         console.log(values)
+        // these values need to be saved in a STATE
+        // this onSubmit needs to trigger a POST
+        // the STATE with these values needs to go with the POST request
     }
 
     return(

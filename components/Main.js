@@ -13,6 +13,7 @@ const Main = (props) => {
             body: JSON.stringify(asset)
         })
         .then(res => res.json())
+        // change props.setAssets to a newly created state that handles only addedAssets
         .then(data => props.setAssets({symbol: "", name: "", qty: "", invested: "", category: "", current: ""}))
         .then(data => console.log('Post req:', data))
     }

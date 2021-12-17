@@ -6,7 +6,7 @@ const Header = (props) => {
 
   return(
     <View style={styles.header}>
-      <Text style={styles.text}>{props.title}</Text>
+      <Text style={styles.text}>Netfolio</Text>
       <AddAsset />
     </View>
   )
