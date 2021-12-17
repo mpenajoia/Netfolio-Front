@@ -15,24 +15,17 @@ const getAssets = async () => {
   )
   .then((res) => res.json())
   .then((data) => setAssets(data))
-  .then(setCheck(True))
-}
-const handleButton = () => {
-  console.log(assets)
-  console.log(assets[0])
 }
 // useEffect for API call
 useEffect(() => {
   getAssets();
-  console.log(assets)
 }, [])
 
   return(
     <View style={globalStyles.container}>
       <Header title='Header Title'/>
-      <Main />
-      <Button onPress={handleButton} title='GET'></Button>
-      {assets  ? <Text>{assets[0].name}</Text> : <Text>Loading</Text>}
+      <Main assets={assets}/>
+      {/* {assets  ? <Text>{assets[0].name}</Text> : <Text>Loading</Text>} */}
     </View>
   )
 }
