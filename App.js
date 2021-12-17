@@ -3,11 +3,11 @@ import {View, Text, Image, StyleSheet, Button} from 'react-native';
 import Header from './components/Header';
 import apiUrl from './backendAPI/apiConfig';
 import { globalStyles } from './styles/global';
+import Main from './components/Main';
 
 const App = () => {
 // Sate for GET data
 const [assets, setAssets] = useState();
-// const [check, setCheck] = useState(false)
 // GET
 const getAssets = async () => {
   await fetch('http://localhost:4000/assets', {
@@ -18,8 +18,6 @@ const getAssets = async () => {
   .then(setCheck(True))
 }
 const handleButton = () => {
-  // setCheck(true)
-  // getAssets()
   console.log(assets)
   console.log(assets[0])
 }
@@ -32,6 +30,7 @@ useEffect(() => {
   return(
     <View style={globalStyles.container}>
       <Header title='Header Title'/>
+      <Main />
       <Button onPress={handleButton} title='GET'></Button>
       {assets  ? <Text>{assets[0].name}</Text> : <Text>Loading</Text>}
     </View>
