@@ -1,18 +1,19 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import AddAsset from './AddAsset';
 
 const Header = (props) => {
 
   return(
     <View style={styles.header}>
       <Text style={styles.text}>{props.title}</Text>
-      <Text style={styles.text}></Text>
+      <AddAsset />
     </View>
   )
 }
 const styles = StyleSheet.create({
   header: {
-    height: 60,
+    height: 500,
     padding: 15,
     backgroundColor: 'darkslateblue',
   },

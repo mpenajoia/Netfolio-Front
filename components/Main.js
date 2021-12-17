@@ -1,34 +1,39 @@
 import React, {useState , useEffect } from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import Content from './Content';
+import Assets from './Assets';
 
 const Main = (props) => {
-console.log(props.assets)
 
-// Create Asset
+    const postAssets = async (asset) => {
+        await fetch('http://localhost:4000/assets', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(asset)
+        })
+        .then(res => res.json())
+        .then(data => props.setAssets({symbol: "", name: "", qty: "", invested: "", category: "", current: ""}))
+        .then(data => console.log('Post req:', data))
+    }
 
-let assetsMap
-if (props.assets){
-    assetsMap = props.assets.map((item, index) => <Text key={index}>{item.name}</Text>)
-}else{
-    assetsMap = <Text>Map empty</Text>
-}
-
-  return(
-    <View style={styles.main}>
-      <Text>This is the Main Component</Text>
-      {assetsMap}
-      <Content/>
-    </View>
-  )
+    return(
+        <View style={styles.main}>
+        <Text style={styles.h1}>This is the Main Component</Text>
+        <Assets assets={props.assets}/>
+        </View>
+    )
 }
 const styles = StyleSheet.create({
   main: {
-    height: 100,
-    padding: 10,
-    backgroundColor: 'purple',
+    height: 300,
+    paddingVertical: 10,
+    backgroundColor: 'grey',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  h1: {
+      fontSize: 30,
   }
 });
 

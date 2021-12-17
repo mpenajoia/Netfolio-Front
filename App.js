@@ -24,8 +24,7 @@ useEffect(() => {
   return(
     <View style={globalStyles.container}>
       <Header title='Header Title'/>
-      <Main assets={assets}/>
-      {/* {assets  ? <Text>{assets[0].name}</Text> : <Text>Loading</Text>} */}
+      <Main assets={assets} setAssets={setAssets}/>
     </View>
   )
 }
