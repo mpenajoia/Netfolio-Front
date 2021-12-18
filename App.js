@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {View, Text, Image, StyleSheet, Button} from 'react-native';
+import {View, Text, Image, StyleSheet, Button, ScrollView} from 'react-native';
 import Header from './components/Header';
 import apiUrl from './backendAPI/apiConfig';
 import { globalStyles } from './styles/global';
@@ -23,8 +23,10 @@ useEffect(() => {
 
   return(
     <View style={globalStyles.container}>
-      <Header getAssets={getAssets}/>
-      <Main assets={assets} setAssets={setAssets}/>
+      <ScrollView>
+        <Header getAssets={getAssets}/>
+        <Main assets={assets} setAssets={setAssets}/>
+      </ScrollView>
     </View>
   )
 }

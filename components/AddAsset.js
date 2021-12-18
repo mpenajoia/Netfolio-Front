@@ -23,14 +23,8 @@ const AddAsset = (props) => {
     
     const formSubmit = (values, actions) => {
         actions.resetForm()
-        setAddedAsset(values)
-        // console.log(addedAsset)
         postAsset(values)
-        // postAsset()
-        
-        // these values need to be saved in a STATE
-        // this onSubmit needs to trigger a POST
-        // the STATE with these values needs to go with the POST request
+        props.getAssets()
     }
 
     const handleX = () => {
