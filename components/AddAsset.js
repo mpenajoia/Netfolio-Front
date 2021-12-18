@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState} from 'react';
 import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
 import { Formik } from 'formik';
 import { globalStyles } from '../styles/global';
@@ -6,16 +6,23 @@ import { globalStyles } from '../styles/global';
 const AddAsset = (props) => {
 
     const formValues = {symbol: "", name: "", qty: "", invested: "", category: "", current: ""}
-
-    const formSubmit = (values) => {
+    const [addedAsset, setAddedAsset] = useState()
+    const formSubmit = (values, actions) => {
+        actions.resetForm()
         console.log(values)
+        
         // these values need to be saved in a STATE
         // this onSubmit needs to trigger a POST
         // the STATE with these values needs to go with the POST request
     }
 
+    const handleX = () => {
+        props.setAssetPop(false)
+    } 
+
     return(
-        <View>
+        <View style={{marginTop: 30}}>
+            <Button title="x" onPress={handleX} />
             <Formik 
                 initialValues={formValues}
                 onSubmit={formSubmit}

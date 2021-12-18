@@ -1,13 +1,26 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Modal, Button} from 'react-native';
 import AddAsset from './AddAsset';
 
 const Header = (props) => {
+  const [assetPop, setAssetPop] = useState(false)
+
+  const handlePop = () => {
+    if(assetPop){
+      setAssetPop(false)
+    }else{
+      setAssetPop(true)
+    }
+  }
 
   return(
     <View style={styles.header}>
       <Text style={styles.text}>Netfolio</Text>
-      <AddAsset />
+      <Button onPress={handlePop} title="Add Asset" />
+      <Modal visible={assetPop}>
+        <AddAsset setAssetPop={setAssetPop}/>
+
+      </Modal>
     </View>
   )
 }
