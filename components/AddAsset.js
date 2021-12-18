@@ -7,9 +7,26 @@ const AddAsset = (props) => {
 
     const formValues = {symbol: "", name: "", qty: "", invested: "", category: "", current: ""}
     const [addedAsset, setAddedAsset] = useState()
+    
+    const postAsset = async (asset) => {
+        await fetch('http://localhost:4000/assets', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(asset)
+        })
+        .then(res => res.json())
+        .then(data => setAddedAsset())
+        // .then(data => console.log(addedAsset))
+    }
+    
     const formSubmit = (values, actions) => {
         actions.resetForm()
-        console.log(values)
+        setAddedAsset(values)
+        // console.log(addedAsset)
+        postAsset(values)
+        // postAsset()
         
         // these values need to be saved in a STATE
         // this onSubmit needs to trigger a POST

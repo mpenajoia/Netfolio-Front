@@ -17,8 +17,8 @@ const Header = (props) => {
     <View style={styles.header}>
       <Text style={styles.text}>Netfolio</Text>
       <Button onPress={handlePop} title="Add Asset" />
-      <Modal visible={assetPop}>
-        <AddAsset setAssetPop={setAssetPop}/>
+      <Modal visible={assetPop} animationType='slide' transparent='true'>
+        <AddAsset getAssets={props.getAssets} setAssetPop={setAssetPop}/>
 
       </Modal>
     </View>
