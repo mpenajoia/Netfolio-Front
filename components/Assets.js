@@ -15,7 +15,7 @@ const Assets = (props) => {
         <View>
             <Text>Assets Page</Text>
             {assetsMap}
-            <Asset/>
+            {/* <Asset/> */}
         </View>
     )
 }
