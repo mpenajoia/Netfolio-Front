@@ -17,6 +17,7 @@ const AddAsset = (props) => {
             body: JSON.stringify(asset)
         })
         .then(res => res.json())
+        // do i need this?
         .then(data => setAddedAsset())
         // .then(data => console.log(addedAsset))
     }
@@ -41,39 +42,39 @@ const AddAsset = (props) => {
                 {(props) => (
                     <View>
                         <TextInput
-                            style={globalStyles.inputField}
+                            style={globalStyles.inputFieldPost}
                             placeholder='Ticker or Symbol'
                             onChangeText={props.handleChange('symbol')}
                             value={props.values.symbol}
                         />
                         <TextInput
-                            style={globalStyles.inputField}
+                            style={globalStyles.inputFieldPost}
                             placeholder='Asset Name'
                             onChangeText={props.handleChange('name')}
                             value={props.values.name}
                         />
                         <TextInput
-                            style={globalStyles.inputField}
+                            style={globalStyles.inputFieldPost}
                             placeholder='Shares or Tokens'
                             onChangeText={props.handleChange('qty')}
                             value={props.values.qty}
                             keyboardType='numeric'
                             />
                         <TextInput
-                            style={globalStyles.inputField}
+                            style={globalStyles.inputFieldPost}
                             placeholder='Invested Amount'
                             onChangeText={props.handleChange('invested')}
                             value={props.values.invested}
                             keyboardType='numeric'
                             />
                         <TextInput
-                            style={globalStyles.inputField}
+                            style={globalStyles.inputFieldPost}
                             placeholder='Category'
                             onChangeText={props.handleChange('category')}
                             value={props.values.category}
                             />
                         <TextInput
-                            style={globalStyles.inputField}
+                            style={globalStyles.inputFieldPost}
                             placeholder='Current Share or Token Price'
                             onChangeText={props.handleChange('current')}
                             value={props.values.current}

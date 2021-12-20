@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {View, Text, StyleSheet, Modal} from 'react-native';
 import { Card } from 'react-native-elements/dist/card/Card';
 import { Button } from 'react-native-elements';
+import EditAsset from './EditAsset';
 
 const Asset = (props) => {
     const onDelete = async () => {
@@ -75,6 +76,7 @@ const Asset = (props) => {
             <Modal visible={editPop} animationType='slide'>
                 <Button title="x" onPress={handleEditPop}/>
                 <Text>{name}</Text>
+                <EditAsset setEditPop={setEditPop} getAssets={props.getAssets} name={name} ind={ind} cat={cat} qty={qty} sym={sym} invested={invested} live={live} id={id}/>
                 <Button title="x" onPress={handleEditPop}/>
             </Modal>
         </View>
