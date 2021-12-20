@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, Modal} from 'react-native';
 import Asset from './Asset';
 
 const Assets = (props) => {
@@ -7,7 +7,7 @@ const Assets = (props) => {
     let assetsMap
     if (props.assets){
         // this map function should map through the array of objects and return the Asset component, instead of a Text component, with the information of each Asset
-        assetsMap = props.assets.map((item, index) => <Asset key={index} assets={props.assets} index={index} item={item}/>)
+        assetsMap = props.assets.map((item, index) => <Asset key={index} getAssets={props.getAssets} setAssets={props.setAssets} assets={props.assets} index={index} item={item}/>)
     }else{
         assetsMap = <Text>Map empty</Text>
     }

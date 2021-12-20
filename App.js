@@ -49,8 +49,8 @@ useEffect(() => {
           </Stack.Navigator>
           
         <ScrollView> 
-          <Header getAssets={getAssets}/> 
-          <Main assets={assets} setAssets={setAssets}/>
+          <Header /> 
+          <Main getAssets={getAssets} assets={assets} setAssets={setAssets}/>
         </ScrollView>
       </View>
     </NavigationContainer>

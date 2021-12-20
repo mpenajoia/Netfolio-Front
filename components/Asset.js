@@ -1,9 +1,27 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, { useState } from 'react';
+import {View, Text, StyleSheet, Modal} from 'react-native';
 import { Card } from 'react-native-elements/dist/card/Card';
 import { Button } from 'react-native-elements';
 
 const Asset = (props) => {
+    const onDelete = async () => {
+        await fetch(`http://localhost:4000/assets/${id}`, {
+            method: 'DELETE',
+            })
+            .then(data => {props.getAssets()})
+    }
+
+    // const onEdit = async () => {
+    //     await fetch(`http://localhost:4000/assets/${id}`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(info)
+    //     })
+    //     .then(data => {props.getAssets()})
+    // }
+    
     // make component that will list the asset's info plus the edit and delete button
     let asset = props.assets
     let ind
@@ -34,7 +52,15 @@ const Asset = (props) => {
         id = 'loading'
     }
 
-    
+    const [editPop, setEditPop] = useState(false)
+    const handleEditPop = () => {
+        if(editPop){
+            setEditPop(false)
+        }else{
+            setEditPop(true)
+        }
+    }
+
 
     return(
         <View key={props.index}>
@@ -42,10 +68,15 @@ const Asset = (props) => {
                 <Text>
                     {name} 
                     
-                    <Button title="Edit" buttonStyle={{fontSize: 20, backgroundColor: '#000', marginHorizontal: 5}} />
-                    <Button title="Delete" buttonStyle={{fontSize: 20}} />
+                    <Button title="Edit" onPress={handleEditPop} buttonStyle={{fontSize: 20, backgroundColor: '#000', marginHorizontal: 5}} />
+                    <Button title="Delete" onPress={onDelete} buttonStyle={{fontSize: 20}} />
                 </Text>
             </Card>
+            <Modal visible={editPop} animationType='slide'>
+                <Button title="x" onPress={handleEditPop}/>
+                <Text>{name}</Text>
+                <Button title="x" onPress={handleEditPop}/>
+            </Modal>
         </View>
     )
 }

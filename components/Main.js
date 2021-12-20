@@ -30,13 +30,13 @@ const Main = (props) => {
 
     return(
         <View style={styles.main}>
-        <Text style={styles.h1}>This is the Main Component</Text>
-        <Button onPress={handlePop} title="Add Asset" />
-        <Modal visible={assetPop} animationType='slide' transparent='true'>
-            <AddAsset getAssets={props.getAssets} setAssetPop={setAssetPop}/>
+            <Text style={styles.h1}>This is the Main Component</Text>
+            <Button onPress={handlePop} title="Add Asset" />
+            <Modal visible={assetPop} animationType='slide' transparent='true'>
+                <AddAsset getAssets={props.getAssets} setAssetPop={setAssetPop}/>
 
-        </Modal>
-        <Assets assets={props.assets}/>
+            </Modal>
+            <Assets assets={props.assets} setAssets={props.setAssets} getAssets={props.getAssets}/>
         </View>
     )
 }
