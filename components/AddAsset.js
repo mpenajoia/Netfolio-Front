@@ -26,15 +26,15 @@ const AddAsset = (props) => {
         actions.resetForm()
         postAsset(values)
         props.getAssets()
+        if(props.tabSwitch){
+            props.setTabSwitch(false)
+        }else{
+            props.setTabSwitch(true)
+        }
     }
-
-    const handleX = () => {
-        props.setAssetPop(false)
-    } 
 
     return(
         <View style={{marginTop: 30}}>
-            <Button title="x" onPress={handleX} />
             <Formik 
                 initialValues={formValues}
                 onSubmit={formSubmit}

@@ -1,7 +1,6 @@
 import React, {useState , useEffect } from 'react';
 import {View, Text, StyleSheet, Modal, Button} from 'react-native';
 import Assets from './Assets';
-import AddAsset from './AddAsset';
 
 const Main = (props) => {
 
@@ -16,7 +15,6 @@ const Main = (props) => {
         .then(res => res.json())
         // change props.setAssets to a newly created state that handles only addedAssets
         .then(data => props.setAssets({symbol: "", name: "", qty: "", invested: "", category: "", current: ""}))
-        .then(data => console.log('Post req:', data))
     }
     const [assetPop, setAssetPop] = useState(false)
 
@@ -27,15 +25,13 @@ const Main = (props) => {
           setAssetPop(true)
         }
     }
+    
+    useEffect(() => {
+        props.getAssets();
+      }, [])
 
     return(
         <View style={styles.main}>
-            <Text style={styles.h1}>This is the Main Component</Text>
-            <Button onPress={handlePop} title="Add Asset" />
-            <Modal visible={assetPop} animationType='slide' transparent='true'>
-                <AddAsset getAssets={props.getAssets} setAssetPop={setAssetPop}/>
-
-            </Modal>
             <Assets assets={props.assets} setAssets={props.setAssets} getAssets={props.getAssets}/>
         </View>
     )

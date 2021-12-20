@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {View, Text, StyleSheet, ScrollView, Modal} from 'react-native';
 import Asset from './Asset';
 
 const Assets = (props) => {
-
+    console.log(props.assets)
+    const [netWorth, setNetWorth] = useState([])
     let assetsMap
+    // let investedTotal
     if (props.assets){
-        // this map function should map through the array of objects and return the Asset component, instead of a Text component, with the information of each Asset
-        assetsMap = props.assets.map((item, index) => <Asset key={index} getAssets={props.getAssets} setAssets={props.setAssets} assets={props.assets} index={index} item={item}/>)
+        // investedTotal = props.assets.map((item,index))
+
+        assetsMap = props.assets.map((item, index) => {
+            // console.log(item.invested)
+            return(
+                <Asset key={index} netWorth={netWorth} setNetWorth={setNetWorth} getAssets={props.getAssets} setAssets={props.setAssets} assets={props.assets} index={index} item={item}/>
+                )
+                
+            })
     }else{
         assetsMap = <Text>Map empty</Text>
     }
     
-    // <Text key={index}>{item.name}, {item.symbol}, {item.qty}, {item._id}</Text>
     return(
         <View>
-            {/* Put Add Asset Button here */}
-            <Text>Assets Page</Text>
             <ScrollView>
-            {assetsMap}
+                <Text>Net Worth: {netWorth}</Text>
+                {assetsMap}
             </ScrollView>
         </View>
     )

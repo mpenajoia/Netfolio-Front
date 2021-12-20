@@ -12,18 +12,6 @@ const Asset = (props) => {
             .then(data => {props.getAssets()})
     }
 
-    // const onEdit = async () => {
-    //     await fetch(`http://localhost:4000/assets/${id}`, {
-    //         method: 'PUT',
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(info)
-    //     })
-    //     .then(data => {props.getAssets()})
-    // }
-    
-    // make component that will list the asset's info plus the edit and delete button
     let asset = props.assets
     let ind
     let cat
@@ -63,7 +51,6 @@ const Asset = (props) => {
             setEditPop(true)
         }
     }
-
 
     return(
         <View key={props.index}>

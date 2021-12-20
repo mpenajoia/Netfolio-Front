@@ -8,23 +8,10 @@ import Header from './components/Header';
 import apiUrl from './backendAPI/apiConfig';
 import { globalStyles } from './styles/global';
 import Main from './components/Main';
-import Asset from './components/Asset';
-import Tabs from './navigation/Tabs';
 import AddAsset from './components/AddAsset';
 
-function AssetScreen({navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Asset')}
-      />
-    </View>
-  );
-}
 
-const Stack = createNativeStackNavigator();
+
 const Tab = createBottomTabNavigator();
 
 
@@ -42,30 +29,20 @@ const getAssets = async () => {
 // useEffect for API call
 useEffect(() => {
   getAssets();
-}, [])
+}, [tabSwitch])
+
+const [tabSwitch, setTabSwitch] = useState(false)
 
   return(
     <NavigationContainer>
       <Tab.Navigator>
-            {/* <Tab.Screen name="Assets" component={Main} /> */}
-            <Tab.Screen name="Assets">
+            <Tab.Screen name="Portfolio">
               {props => <Main {...props} getAssets={getAssets} assets={assets}/>}
             </Tab.Screen>
-
-            <Tab.Screen name="Add" component={AddAsset} />
+            <Tab.Screen name="Add Assets">
+              {props => <AddAsset {...props} setTabSwitch={setTabSwitch} tabSwitch={tabSwitch} getAssets={getAssets} />}
+            </Tab.Screen>
         </Tab.Navigator>
-        {/* <Tabs /> */}
-      {/* <View style={globalStyles.container}> */}
-          {/* <Stack.Navigator initialRouteName='AssetScreen'>
-            <Stack.Screen name="AssetScreen" component={AssetScreen} />
-            <Stack.Screen name="Asset" component={Asset} />
-          </Stack.Navigator> */}
-          
-        {/* <ScrollView> 
-          <Header /> 
-          <Main getAssets={getAssets} assets={assets} setAssets={setAssets}/>
-        </ScrollView> */}
-      {/* </View> */}
     </NavigationContainer>
   )
 }
