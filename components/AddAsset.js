@@ -20,6 +20,7 @@ const AddAsset = (props) => {
         // do i need this?
         .then(data => setAddedAsset())
         // .then(data => console.log(addedAsset))
+        .then(data => {props.getAssets()})
     }
     
     const formSubmit = (values, actions) => {
@@ -34,7 +35,7 @@ const AddAsset = (props) => {
     }
 
     return(
-        <View style={{marginTop: 30}}>
+        <View style={{marginTop: 50}}>
             <Formik 
                 initialValues={formValues}
                 onSubmit={formSubmit}
