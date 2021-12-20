@@ -57,7 +57,6 @@ const Asset = (props) => {
             <Card>
                 <Text>
                     {name}, {sym}, Inv:{invested}, Live:{live}, {cat}, QTY: {qty}, g/l : {gL}
-                    
                     <Button title="Edit" onPress={handleEditPop} buttonStyle={{fontSize: 20, backgroundColor: '#000', marginHorizontal: 5}} />
                     <Button title="Delete" onPress={onDelete} buttonStyle={{fontSize: 20}} />
                 </Text>

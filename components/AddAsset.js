@@ -35,7 +35,7 @@ const AddAsset = (props) => {
     }
 
     return(
-        <View style={{marginTop: 50}}>
+        <View style={{marginTop: 50, backgroundColor: '#000'}}>
             <Formik 
                 initialValues={formValues}
                 onSubmit={formSubmit}
@@ -43,7 +43,7 @@ const AddAsset = (props) => {
                 {(props) => (
                     <View>
                         <TextInput
-                            style={globalStyles.inputFieldPost}
+                            style={[globalStyles.inputFieldPost, {marginHorizontal: 50 }]}
                             placeholder='Ticker or Symbol'
                             onChangeText={props.handleChange('symbol')}
                             value={props.values.symbol}

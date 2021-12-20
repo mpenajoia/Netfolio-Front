@@ -9,8 +9,9 @@ import apiUrl from './backendAPI/apiConfig';
 import { globalStyles } from './styles/global';
 import Main from './components/Main';
 import AddAsset from './components/AddAsset';
-
-
+import LinearGradient from 'react-native-linear-gradient';
+import RadialGradient from 'react-native-radial-gradient';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,8 +35,24 @@ useEffect(() => {
 const [tabSwitch, setTabSwitch] = useState(false)
 
   return(
+<LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
+
     <NavigationContainer>
-      <Tab.Navigator>
+      <Header/>
+      <Tab.Navigator screenOptions={{
+        tabBarShowLabel: true,
+        headerShown: false,
+        tabBarStyle: {
+        position: 'absolute',
+        bottom: 25,
+        left: 20,
+        right: 20,
+        elevation: 0,
+        backgroundColor: '#ffffff',
+        borderRadius: 15,
+        height: 60,
+        }
+      }}>
             <Tab.Screen name="Portfolio">
               {props => <Main {...props} getAssets={getAssets} assets={assets}/>}
             </Tab.Screen>
@@ -44,6 +61,19 @@ const [tabSwitch, setTabSwitch] = useState(false)
             </Tab.Screen>
         </Tab.Navigator>
     </NavigationContainer>
+  </LinearGradient>
   )
 }
+
+var styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5
+  },
+});
+
+
+
 export default App;

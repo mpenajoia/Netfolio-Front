@@ -18,7 +18,7 @@ const Main = (props) => {
       }, [])
 
     return(
-        <View style={styles.main}>
+        <View style={[styles.main, {backgroundColor: 'transparent'}]}>
             <Assets assets={props.assets} setAssets={props.setAssets} getAssets={props.getAssets}/>
         </View>
     )
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     paddingVertical: 10,
-    backgroundColor: 'grey',
+    backgroundColor: 'transparent',
     justifyContent: 'center',
     alignItems: 'center'
   },
