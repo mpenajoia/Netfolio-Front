@@ -53,6 +53,8 @@ const Asset = (props) => {
         id = 'loading'
     }
 
+    const gL = (qty * live) - (qty * invested)
+
     const [editPop, setEditPop] = useState(false)
     const handleEditPop = () => {
         if(editPop){
@@ -67,7 +69,7 @@ const Asset = (props) => {
         <View key={props.index}>
             <Card>
                 <Text>
-                    {name} 
+                    {name}, {sym}, Inv:{invested}, Live:{live}, {cat}, QTY: {qty}, g/l : {gL}
                     
                     <Button title="Edit" onPress={handleEditPop} buttonStyle={{fontSize: 20, backgroundColor: '#000', marginHorizontal: 5}} />
                     <Button title="Delete" onPress={onDelete} buttonStyle={{fontSize: 20}} />

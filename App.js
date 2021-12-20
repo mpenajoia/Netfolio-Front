@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import {View, Text, Image, StyleSheet, Button, ScrollView} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useLinkProps } from '@react-navigation/native';
 import { createNativeStackNavigator} from '@react-navigation/native-stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Header from './components/Header';
 import apiUrl from './backendAPI/apiConfig';
 import { globalStyles } from './styles/global';
 import Main from './components/Main';
 import Asset from './components/Asset';
+import Tabs from './navigation/Tabs';
+import AddAsset from './components/AddAsset';
 
 function AssetScreen({navigation}) {
   return (
@@ -22,6 +25,7 @@ function AssetScreen({navigation}) {
 }
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 
 const App = () => {
@@ -42,17 +46,26 @@ useEffect(() => {
 
   return(
     <NavigationContainer>
-      <View style={globalStyles.container}>
-          <Stack.Navigator initialRouteName='AssetScreen'>
+      <Tab.Navigator>
+            {/* <Tab.Screen name="Assets" component={Main} /> */}
+            <Tab.Screen name="Assets">
+              {props => <Main {...props} getAssets={getAssets} assets={assets}/>}
+            </Tab.Screen>
+
+            <Tab.Screen name="Add" component={AddAsset} />
+        </Tab.Navigator>
+        {/* <Tabs /> */}
+      {/* <View style={globalStyles.container}> */}
+          {/* <Stack.Navigator initialRouteName='AssetScreen'>
             <Stack.Screen name="AssetScreen" component={AssetScreen} />
             <Stack.Screen name="Asset" component={Asset} />
-          </Stack.Navigator>
+          </Stack.Navigator> */}
           
-        <ScrollView> 
+        {/* <ScrollView> 
           <Header /> 
           <Main getAssets={getAssets} assets={assets} setAssets={setAssets}/>
-        </ScrollView>
-      </View>
+        </ScrollView> */}
+      {/* </View> */}
     </NavigationContainer>
   )
 }

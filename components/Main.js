@@ -42,7 +42,7 @@ const Main = (props) => {
 }
 const styles = StyleSheet.create({
   main: {
-    height: 300,
+    flex: 1,
     paddingVertical: 10,
     backgroundColor: 'grey',
     justifyContent: 'center',
