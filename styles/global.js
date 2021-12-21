@@ -6,21 +6,26 @@ export const globalStyles = StyleSheet.create({
       paddingTop: 60
     },
     inputFieldPost: {
-      backgroundColor: 'yellow',
+      backgroundColor: '#19182e',
       padding: 15,
       borderRadius: 5,
-      fontSize: 14,
+      fontSize: 16,
       borderColor: 'transparent',
       borderWidth: 0,
       marginVertical: 5,
+      color: "#ffc219",
+      marginHorizontal: 25,
+      height: 60,
     },
     inputFieldPut: {
-      backgroundColor: 'orange',
+      backgroundColor: '#19182e',
       padding: 15,
       borderRadius: 5,
-      fontSize: 14,
+      fontSize: 16,
       borderColor: 'transparent',
       borderWidth: 0,
       marginVertical: 5,
+      marginHorizontal: 25,
+      height: 60,
     }
   });

@@ -3,6 +3,8 @@ import {View, Text, StyleSheet, Modal} from 'react-native';
 import { Card } from 'react-native-elements/dist/card/Card';
 import { Button } from 'react-native-elements';
 import EditAsset from './EditAsset';
+import FeatherIcon from 'react-native-vector-icons/Feather'
+import { Icon } from 'react-native-vector-icons/Icon';
 
 const Asset = (props) => {
     const onDelete = async () => {
@@ -51,16 +53,18 @@ const Asset = (props) => {
             setEditPop(true)
         }
     }
-
+    const buttonIconSize = 24
     return(
-        <View key={props.index}>
-            <Card>
+        <View key={props.index} style={{backgroundColor: 'rgba(52, 52, 52, 0.0)'}}>
+            {/* <Card> */}
                 <Text>
                     {name}, {sym}, Inv:{invested}, Live:{live}, {cat}, QTY: {qty}, g/l : {gL}
-                    <Button title="Edit" onPress={handleEditPop} buttonStyle={{fontSize: 20, backgroundColor: '#000', marginHorizontal: 5}} />
-                    <Button title="Delete" onPress={onDelete} buttonStyle={{fontSize: 20}} />
+                    {/* <Button title="Edit" onPress={handleEditPop} buttonStyle={{fontSize: 20, backgroundColor: '#000', marginHorizontal: 5}} />
+                    <Button title="Delete" onPress={onDelete} buttonStyle={{fontSize: 20}} /> */}
+                    <FeatherIcon color="#ffc219" onPress={handleEditPop} name="edit-2" size={buttonIconSize} />
+                    <FeatherIcon color="#ffc219" onPress={onDelete} name="trash-2" size={buttonIconSize} />
                 </Text>
-            </Card>
+            {/* </Card> */}
             <Modal visible={editPop} animationType='slide'>
                 <Button title="x" onPress={handleEditPop}/>
                 <Text>{name}</Text>

@@ -29,7 +29,7 @@ const Assets = (props) => {
 
     return(
         <View>
-            <ScrollView style={{backgroundColor:'transparent'}}>
+            <ScrollView >
                 <View style={{alignItems: 'center', backgroundColor: 'transparent'}}>
                     <Text>Net Worth: ${netWorth}</Text>
                     <Text>Invested Total: ${investedSum}</Text>

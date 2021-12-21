@@ -10,14 +10,9 @@ import { globalStyles } from './styles/global';
 import Main from './components/Main';
 import AddAsset from './components/AddAsset';
 import LinearGradient from 'react-native-linear-gradient';
-import RadialGradient from 'react-native-radial-gradient';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { PieChart } from "react-native-feather";
 import FeatherIcon from 'react-native-vector-icons/Feather'
-import { ThemeColors } from 'react-navigation';
 
 const Tab = createBottomTabNavigator();
-
 
 const App = () => {
 // Sate for GET data
@@ -40,24 +35,26 @@ const [tabSwitch, setTabSwitch] = useState(false)
 const iconSize = 35;
 
   return(
-<LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
-
+    
     <NavigationContainer>
       <Header/>
+      {/* <LinearGradient Gradient colors={['#201f2e', '#1F1E2D', '#171621']} style={styles.linearGradient}> */}
       <Tab.Navigator screenOptions={{
-        tabBarActiveTintColor: 'red',
+        tabBarActiveTintColor: '#ffc219',
         tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {
-        position: 'absolute',
-        bottom: 25,
-        left: 40,
-        right: 40,
-        elevation: 0,
-        backgroundColor: '#cccccc',
-        borderRadius: 15,
-        height: 60,
-        paddingVertical: 10,
+          position: 'absolute',
+          bottom: 25,
+          left: 40,
+          right: 40,
+          elevation: 0,
+          backgroundColor: '#1F1E2D',
+          borderRadius: 15,
+          height: 60,
+          paddingVertical: 10,
+          flex:1,
+          borderTopWidth: 0,
         }
       }}>
             <Tab.Screen name="Portfolio" options={{
@@ -71,17 +68,14 @@ const iconSize = 35;
               {props => <AddAsset {...props} setTabSwitch={setTabSwitch} tabSwitch={tabSwitch} getAssets={getAssets} />}
             </Tab.Screen>
         </Tab.Navigator>
-    </NavigationContainer>
-  </LinearGradient>
+    {/* </LinearGradient> */}
+  </NavigationContainer>
   )
 }
 
 var styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
-    paddingLeft: 15,
-    paddingRight: 15,
-    borderRadius: 5
   },
 });
 

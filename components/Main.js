@@ -1,5 +1,6 @@
 import React, {useState , useEffect } from 'react';
 import {View, Text, StyleSheet, Modal, Button} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import Assets from './Assets';
 
 const Main = (props) => {
@@ -18,21 +19,26 @@ const Main = (props) => {
       }, [])
 
     return(
-        <View style={[styles.main, {backgroundColor: 'transparent'}]}>
+        <LinearGradient Gradient colors={['#201f2e', '#1F1E2D', '#171621']} style={styles.linearGradient}>
+        <View style={[styles.main]}>
             <Assets assets={props.assets} setAssets={props.setAssets} getAssets={props.getAssets}/>
         </View>
+        </LinearGradient>
     )
 }
 const styles = StyleSheet.create({
   main: {
     flex: 1,
     paddingVertical: 10,
-    backgroundColor: 'transparent',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderRadius: 20,
   },
   h1: {
       fontSize: 30,
+  },
+  linearGradient: {
+    flex: 1,
   }
 });
 
