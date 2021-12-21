@@ -13,6 +13,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import RadialGradient from 'react-native-radial-gradient';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { PieChart } from "react-native-feather";
+import FeatherIcon from 'react-native-vector-icons/Feather'
 
 const Tab = createBottomTabNavigator();
 
@@ -35,13 +36,15 @@ useEffect(() => {
 
 const [tabSwitch, setTabSwitch] = useState(false)
 
+const iconSize = 24;
+
   return(
 <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
 
     <NavigationContainer>
       <Header/>
       <Tab.Navigator screenOptions={{
-        tabBarShowLabel: true,
+        tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {
         position: 'absolute',
@@ -54,10 +57,14 @@ const [tabSwitch, setTabSwitch] = useState(false)
         height: 60,
         }
       }}>
-            <Tab.Screen name="Portfolio">
+            <Tab.Screen name="Portfolio" options={{
+              tabBarIcon: () => <FeatherIcon size={iconSize} name="pie-chart"/>
+            }}>
               {props => <Main {...props} getAssets={getAssets} assets={assets}/>}
             </Tab.Screen>
-            <Tab.Screen name="Add Assets">
+            <Tab.Screen name="Add Assets" options={{
+              tabBarIcon: () => <FeatherIcon size={iconSize} name="plus-circle"/>
+            }}>
               {props => <AddAsset {...props} setTabSwitch={setTabSwitch} tabSwitch={tabSwitch} getAssets={getAssets} />}
             </Tab.Screen>
         </Tab.Navigator>
