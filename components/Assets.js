@@ -13,7 +13,7 @@ const Assets = (props) => {
             netWorthArr.push(item.qty * item.current)
             netInvestedArr.push(item.qty * item.invested)
             return(
-                <Asset key={index} getAssets={props.getAssets} setAssets={props.setAssets} assets={props.assets} index={index} item={item}/>
+                <Asset gainLoss={gainLoss} key={index} getAssets={props.getAssets} setAssets={props.setAssets} assets={props.assets} index={index} item={item}/>
                 )
                 
             })
@@ -26,13 +26,6 @@ const Assets = (props) => {
         investedSum += netInvestedArr[i];
     }
     const gainLoss = (netWorth - investedSum)
-
-    let greenRed
-    if(gainLoss > 0){
-        greenRed = 'green'
-    }else{
-        greenRed = 'red'
-    }
 
     return(
         <View style={{paddingTop: 50}}>

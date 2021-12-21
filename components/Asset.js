@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import {View, Text, StyleSheet, Modal} from 'react-native';
+import {View, Text, StyleSheet, Modal, Dimensions} from 'react-native';
 import { Card } from 'react-native-elements/dist/card/Card';
 import { Button } from 'react-native-elements';
 import EditAsset from './EditAsset';
 import FeatherIcon from 'react-native-vector-icons/Feather'
 import { Icon } from 'react-native-vector-icons/Icon';
 import LinearGradient from 'react-native-linear-gradient';
+
+const SCREEN_WIDTH = Dimensions.get('window').width
+
 
 const Asset = (props) => {
     const onDelete = async () => {
@@ -47,7 +50,7 @@ const Asset = (props) => {
         worth = 'loading'
     }
 
-    const gL = (qty * live) - (qty * invested)
+    const gL = (qty * live) - ((invested/qty) * qty)
     const [editPop, setEditPop] = useState(false)
     const handleEditPop = () => {
         if(editPop){
@@ -57,7 +60,6 @@ const Asset = (props) => {
         }
     }
     const buttonIconSize = 24
-    
     return(
         <View style={styles.assetContainer} key={props.index}>
                     <View style={styles.assetSection}>    
@@ -72,9 +74,9 @@ const Asset = (props) => {
                                 </Text>
                             </View>
                             <View style={styles.midLine}>
-                                <Text style={styles.midText}>{qty}</Text>
                                 <Text style={styles.midText}>{cat}</Text>
-                                <Text style={styles.midText}>{gL.toLocaleString('en-US', {
+                                <Text style={styles.midText}>{qty}</Text>
+                                <Text style={[styles.midText, (gL > 0) ? styles.gain : styles.loss]}>{gL.toLocaleString('en-US', {
                                         style: 'currency',
                                         currency: 'USD'
                                     })}
@@ -105,7 +107,7 @@ var styles = StyleSheet.create({
         // marginVertical: 10,
         // borderBottomColor: '31F1E2D',
         // borderBottomWidth: 1,
-        width: 390,
+        width: SCREEN_WIDTH,
         marginBottom: 1.5,
     },  
     assetSection: {
@@ -141,7 +143,12 @@ var styles = StyleSheet.create({
         color: 'white',
         alignItems: 'center',
     },
-
+    gain: {
+        color: '#29E7B9',
+    },
+    loss: {
+        color: '#FF4963',
+    },
   });
 
 export default Asset;
