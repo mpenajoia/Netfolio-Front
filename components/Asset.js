@@ -5,6 +5,7 @@ import { Button } from 'react-native-elements';
 import EditAsset from './EditAsset';
 import FeatherIcon from 'react-native-vector-icons/Feather'
 import { Icon } from 'react-native-vector-icons/Icon';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Asset = (props) => {
     const onDelete = async () => {
@@ -55,7 +56,7 @@ const Asset = (props) => {
     }
     const buttonIconSize = 24
     return(
-        <View key={props.index} style={{backgroundColor: 'rgba(52, 52, 52, 0.0)'}}>
+        <View key={props.index}>
             {/* <Card> */}
                 <Text>
                     {name}, {sym}, Inv:{invested}, Live:{live}, {cat}, QTY: {qty}, g/l : {gL}
@@ -66,12 +67,21 @@ const Asset = (props) => {
                 </Text>
             {/* </Card> */}
             <Modal visible={editPop} animationType='slide'>
-                <Button title="x" onPress={handleEditPop}/>
-                <Text>{name}</Text>
+                {/* <Button title="x" onPress={handleEditPop}/> */}
+                <LinearGradient Gradient colors={['#201f2e', '#1F1E2D', '#171621']} style={styles.linearGradient}>  
+                <Text style={{textAlign: 'center', paddingTop: 60,}}>{name}</Text>
                 <EditAsset setEditPop={setEditPop} getAssets={props.getAssets} name={name} ind={ind} cat={cat} qty={qty} sym={sym} invested={invested} live={live} id={id}/>
-                <Button title="x" onPress={handleEditPop}/>
+                {/* <Button title="x" onPress={handleEditPop}/> */}
+                </LinearGradient>
             </Modal>
         </View>
     )
 }
+
+var styles = StyleSheet.create({
+    linearGradient: {
+      flex: 1,
+    },
+  });
+
 export default Asset;

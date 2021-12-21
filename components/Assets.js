@@ -33,7 +33,8 @@ const Assets = (props) => {
                 <View style={{alignItems: 'center', backgroundColor: 'transparent'}}>
                     <Text>Net Worth: ${netWorth}</Text>
                     <Text>Invested Total: ${investedSum}</Text>
-                    <Text>Gain/Loss: ${gainLoss}</Text>
+                    <Text>Gain/Loss: $
+                        <Text>{gainLoss}</Text></Text>
                     {assetsMap}
                 </View>
             </ScrollView>

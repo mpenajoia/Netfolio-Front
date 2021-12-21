@@ -14,6 +14,7 @@ export const globalStyles = StyleSheet.create({
       borderWidth: 0,
       marginVertical: 5,
       color: "#ffc219",
+      textAlign: 'center',
       marginHorizontal: 25,
       height: 60,
     },
@@ -25,6 +26,8 @@ export const globalStyles = StyleSheet.create({
       borderColor: 'transparent',
       borderWidth: 0,
       marginVertical: 5,
+      color: "#ffc219",
+      textAlign: 'center',
       marginHorizontal: 25,
       height: 60,
     }

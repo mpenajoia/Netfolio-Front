@@ -90,7 +90,7 @@ const AddAsset = (props) => {
                             value={props.values.current}
                             keyboardType='numeric'
                         />
-                        <Button title='submit' colors='blue' onPress={props.handleSubmit}/>   
+                        <Button title='submit' color='#ffc219' onPress={props.handleSubmit}/>   
                     </View>
                 )}
 
