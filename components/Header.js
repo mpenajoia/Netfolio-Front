@@ -9,7 +9,6 @@ const Header = (props) => {
   return(
     <View style={styles.header}>
       <Text style={styles.text}>Netfolio</Text>
-      {/* Put a button for Assets and Charts/Portfolio */}
     </View>
   )
 }

@@ -27,18 +27,57 @@ const Assets = (props) => {
     }
     const gainLoss = (netWorth - investedSum)
 
+    let greenRed
+    if(gainLoss > 0){
+        greenRed = 'green'
+    }else{
+        greenRed = 'red'
+    }
+
     return(
-        <View>
-            <ScrollView >
+        <View style={{paddingTop: 50}}>
                 <View style={{alignItems: 'center', backgroundColor: 'transparent'}}>
-                    <Text>Net Worth: ${netWorth}</Text>
-                    <Text>Invested Total: ${investedSum}</Text>
-                    <Text>Gain/Loss: $
-                        <Text>{gainLoss}</Text></Text>
-                    {assetsMap}
-                </View>
+                    <Text style={styles.assetsBold}>Net Worth: 
+                        <Text style={styles.assetsNumbers}> ${netWorth}</Text>
+                    </Text>
+                    <Text style={styles.assetsBold} >Invested Total: 
+                        <Text style={styles.assetsNumbers}> ${investedSum}</Text>
+                    </Text>
+                    <Text style={styles.assetsBold} >Gain/Loss: 
+                        <Text style={[(gainLoss > 0) ? styles.gain : styles.loss]} > ${gainLoss}</Text>
+                    </Text>
+                    <View style={styles.assetsWrapper}>
+            <ScrollView >
+                        {assetsMap}
             </ScrollView>
+                    </View>
+                </View>
         </View>
     )
 }
+
+
+const styles = StyleSheet.create({
+    assetsBold: {
+      paddingVertical: 5,
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: 25,
+      color: '#ffc219'
+    },
+    assetsNumbers: {
+        color: '#fff'
+    },
+    gain: {
+        color: '#29E7B9',
+    },
+    loss: {
+        color: '#FF4963',
+    },
+    assetsWrapper: {
+        marginVertical: 25,
+    },
+
+  });
+
 export default Assets;

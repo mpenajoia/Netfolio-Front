@@ -24,6 +24,7 @@ const Asset = (props) => {
     let invested 
     let live 
     let id 
+    let worth
     if(asset){
         ind = props.index
         cat = props.item.category
@@ -33,6 +34,7 @@ const Asset = (props) => {
         invested = props.item.invested
         live = props.item.current
         id = props.item._id
+        worth = props.item.current * props.item.qty
     }else{
         ind = 'loading'
         cat = 'loading'
@@ -42,10 +44,10 @@ const Asset = (props) => {
         invested = 'loading'
         live = 'loading'
         id = 'loading'
+        worth = 'loading'
     }
 
     const gL = (qty * live) - (qty * invested)
-
     const [editPop, setEditPop] = useState(false)
     const handleEditPop = () => {
         if(editPop){
@@ -55,23 +57,28 @@ const Asset = (props) => {
         }
     }
     const buttonIconSize = 24
+    
     return(
-        <View key={props.index}>
-            {/* <Card> */}
-                <Text>
-                    {name}, {sym}, Inv:{invested}, Live:{live}, {cat}, QTY: {qty}, g/l : {gL}
-                    {/* <Button title="Edit" onPress={handleEditPop} buttonStyle={{fontSize: 20, backgroundColor: '#000', marginHorizontal: 5}} />
-                    <Button title="Delete" onPress={onDelete} buttonStyle={{fontSize: 20}} /> */}
-                    <FeatherIcon color="#ffc219" onPress={handleEditPop} name="edit-2" size={buttonIconSize} />
-                    <FeatherIcon color="#ffc219" onPress={onDelete} name="trash-2" size={buttonIconSize} />
-                </Text>
-            {/* </Card> */}
+        <View style={styles.assetContainer} key={props.index}>
+                    <View style={styles.assetSection}>    
+                        {/* <Text> */}
+                            <View style={styles.topLine}>
+                                <Text>{sym}</Text>
+                                <Text>{qty}</Text>
+                                <Text>{worth}</Text>
+                            </View>
+                            <View style={styles.bottomLine}>
+
+                            {/* {name}, {sym}, Inv:{invested}, Live:{live}, {cat}, QTY: {qty}, g/l : {gL} */}
+                            <FeatherIcon color="#ffc219" onPress={handleEditPop} name="edit-2" size={buttonIconSize} />
+                            <FeatherIcon color="#ffc219" onPress={onDelete} name="trash-2" size={buttonIconSize} />
+                            </View>
+                        {/* </Text> */}
+                    </View>
             <Modal visible={editPop} animationType='slide'>
-                {/* <Button title="x" onPress={handleEditPop}/> */}
                 <LinearGradient Gradient colors={['#201f2e', '#1F1E2D', '#171621']} style={styles.linearGradient}>  
-                <Text style={{textAlign: 'center', paddingTop: 60,}}>{name}</Text>
-                <EditAsset setEditPop={setEditPop} getAssets={props.getAssets} name={name} ind={ind} cat={cat} qty={qty} sym={sym} invested={invested} live={live} id={id}/>
-                {/* <Button title="x" onPress={handleEditPop}/> */}
+                    <Text style={{textAlign: 'center', paddingTop: 60,}}>{name}</Text>
+                    <EditAsset setEditPop={setEditPop} getAssets={props.getAssets} name={name} ind={ind} cat={cat} qty={qty} sym={sym} invested={invested} live={live} id={id}/>
                 </LinearGradient>
             </Modal>
         </View>
@@ -82,6 +89,24 @@ var styles = StyleSheet.create({
     linearGradient: {
       flex: 1,
     },
+    assetContainer: {
+        marginVertical: 10,
+    },  
+    assetSection: {
+        padding: 30,
+        borderRadius: 20,
+        backgroundColor: '#2e2c45',
+        width: 350,
+    },  
+    topLine: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 15,
+    },
+    bottomLine: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    }
   });
 
 export default Asset;
