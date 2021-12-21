@@ -28,17 +28,19 @@ const Main = (props) => {
 }
 const styles = StyleSheet.create({
   main: {
-    flex: 1,
+    // flex: 1,
     paddingVertical: 10,
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
+    alignSelf: 'stretch',
     borderRadius: 20,
+    // width: 600,
   },
   h1: {
       fontSize: 30,
   },
   linearGradient: {
-    flex: 1,
+    // flex: 1,
   }
 });
 

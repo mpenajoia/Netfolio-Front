@@ -36,22 +36,41 @@ const Assets = (props) => {
 
     return(
         <View style={{paddingTop: 50}}>
-                <View style={{alignItems: 'center', backgroundColor: 'transparent'}}>
+            <View style={{alignItems: 'center', backgroundColor: 'transparent', }}>
+                <View>    
                     <Text style={styles.assetsBold}>Net Worth: 
-                        <Text style={styles.assetsNumbers}> ${netWorth}</Text>
+                        <Text style={styles.assetsNumbers}> {netWorth.toLocaleString('en-US', {
+                                        style: 'currency',
+                                        currency: 'USD'
+                                    })}
+                        </Text>
                     </Text>
-                    <Text style={styles.assetsBold} >Invested Total: 
-                        <Text style={styles.assetsNumbers}> ${investedSum}</Text>
-                    </Text>
-                    <Text style={styles.assetsBold} >Gain/Loss: 
-                        <Text style={[(gainLoss > 0) ? styles.gain : styles.loss]} > ${gainLoss}</Text>
-                    </Text>
-                    <View style={styles.assetsWrapper}>
-            <ScrollView >
-                        {assetsMap}
-            </ScrollView>
-                    </View>
                 </View>
+                <View >
+                    <Text style={styles.assetsBold} >Gain/Loss: 
+                        <Text style={[(gainLoss > 0) ? styles.gain : styles.loss]} > {gainLoss.toLocaleString('en-US', {
+                                        style: 'currency',
+                                        currency: 'USD'
+                                    })}
+                        </Text>
+                    </Text>
+                {/* </View>
+                <View> */}
+                    <Text style={styles.assetsBold} >Invested Total: 
+                        <Text style={styles.assetsNumbers}> {investedSum.toLocaleString('en-US', {
+                                        style: 'currency',
+                                        currency: 'USD'
+                                    })}
+                        </Text>
+                    </Text>
+                </View>
+
+                <View style={styles.assetsWrapper}>
+                    <ScrollView >
+                        {assetsMap}
+                    </ScrollView>
+                </View>
+            </View>
         </View>
     )
 }
@@ -63,6 +82,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       fontSize: 25,
+      fontWeight: '800',
       color: '#ffc219'
     },
     assetsNumbers: {

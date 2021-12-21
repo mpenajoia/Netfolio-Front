@@ -11,6 +11,7 @@ import Main from './components/Main';
 import AddAsset from './components/AddAsset';
 import LinearGradient from 'react-native-linear-gradient';
 import FeatherIcon from 'react-native-vector-icons/Feather'
+import Assets from './components/Assets';
 
 const Tab = createBottomTabNavigator();
 

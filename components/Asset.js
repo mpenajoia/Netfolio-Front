@@ -63,16 +63,28 @@ const Asset = (props) => {
                     <View style={styles.assetSection}>    
                         {/* <Text> */}
                             <View style={styles.topLine}>
-                                <Text>{sym}</Text>
-                                <Text>{qty}</Text>
-                                <Text>{worth}</Text>
+                                <Text style={styles.topText}>{sym}</Text>
+                                <Text style={styles.topText}>{name}</Text>
+                                <Text style={styles.topText}>{worth.toLocaleString('en-US', {
+                                    style: 'currency',
+                                    currency: 'USD'
+                                })}
+                                </Text>
                             </View>
-                            <View style={styles.bottomLine}>
-
+                            <View style={styles.midLine}>
+                                <Text style={styles.midText}>{qty}</Text>
+                                <Text style={styles.midText}>{cat}</Text>
+                                <Text style={styles.midText}>{gL.toLocaleString('en-US', {
+                                        style: 'currency',
+                                        currency: 'USD'
+                                    })}
+                                </Text>
                             {/* {name}, {sym}, Inv:{invested}, Live:{live}, {cat}, QTY: {qty}, g/l : {gL} */}
+                            </View>
+                            {/* <View style={styles.bottomLine}>
                             <FeatherIcon color="#ffc219" onPress={handleEditPop} name="edit-2" size={buttonIconSize} />
                             <FeatherIcon color="#ffc219" onPress={onDelete} name="trash-2" size={buttonIconSize} />
-                            </View>
+                            </View> */}
                         {/* </Text> */}
                     </View>
             <Modal visible={editPop} animationType='slide'>
@@ -90,23 +102,46 @@ var styles = StyleSheet.create({
       flex: 1,
     },
     assetContainer: {
-        marginVertical: 10,
+        // marginVertical: 10,
+        // borderBottomColor: '31F1E2D',
+        // borderBottomWidth: 1,
+        width: 390,
+        marginBottom: 1.5,
     },  
     assetSection: {
-        padding: 30,
-        borderRadius: 20,
+        paddingHorizontal: 30,
+        paddingVertical: 15,
+        // borderRadius: 20,
         backgroundColor: '#2e2c45',
-        width: 350,
+        // width: 350,
     },  
     topLine: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginBottom: 15,
     },
-    bottomLine: {
+    midLine: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-    }
+        // marginBottom: 15,
+    },
+    bottomLine: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    topText: {
+        fontSize: 20,
+        fontWeight: '800',
+        color: 'white',
+        alignItems: 'center',
+    },
+    midText: {
+        fontSize: 15,
+        fontWeight: '600',
+        color: 'white',
+        alignItems: 'center',
+    },
+
   });
 
 export default Asset;
