@@ -12,6 +12,7 @@ import AddAsset from './components/AddAsset';
 import LinearGradient from 'react-native-linear-gradient';
 import RadialGradient from 'react-native-radial-gradient';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { PieChart } from "react-native-feather";
 
 const Tab = createBottomTabNavigator();
 
