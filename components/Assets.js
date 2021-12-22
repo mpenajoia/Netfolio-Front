@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import {View, Text, StyleSheet, ScrollView, Modal} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, Dimensions} from 'react-native';
 import Asset from './Asset';
+
+const SCREEN_WIDTH = Dimensions.get('window').width
+const SCREEN_HEIGHT = Dimensions.get('window').height
 
 const Assets = (props) => {
     let netWorthArr = []
@@ -30,7 +33,7 @@ const Assets = (props) => {
     console.log(props.assets)
 
     return(
-        <View style={{paddingTop: 50}}>
+        <View style={{paddingTop: 10}}>
             <View style={{alignItems: 'center', backgroundColor: 'transparent', }}>
                 <View>    
                     <Text style={styles.assetsBold}>Net Worth: 
@@ -60,7 +63,7 @@ const Assets = (props) => {
                     </Text>
                 </View>
                 <View style={styles.assetsWrapper}>
-                    <ScrollView >
+                    <ScrollView style={{width: SCREEN_WIDTH, marginBottom: 128}}>
                         {assetsMap}
                     </ScrollView>
                 </View>
@@ -89,7 +92,9 @@ const styles = StyleSheet.create({
         color: '#FF4963',
     },
     assetsWrapper: {
-        marginVertical: 25,
+        marginVertical: 30,
+        height: '80%',
+        // paddingBottom: 170,
     },
 
   });

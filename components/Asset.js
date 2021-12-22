@@ -79,10 +79,10 @@ const Asset = (props) => {
                                 })}
                             </Text>
                         </View>
-                        {/* <View style={styles.bottomLine}>
+                        <View style={styles.bottomLine}>
                         <FeatherIcon color="#ffc219" onPress={handleEditPop} name="edit-2" size={buttonIconSize} />
                         <FeatherIcon color="#ffc219" onPress={onDelete} name="trash-2" size={buttonIconSize} />
-                        </View> */}
+                        </View>
                 </View>
                 <Modal visible={editPop} animationType='slide'>
                     <LinearGradient Gradient colors={['#201f2e', '#1F1E2D', '#171621']} style={styles.linearGradient}>  
@@ -99,7 +99,7 @@ var styles = StyleSheet.create({
       flex: 1,
     },
     assetContainer: {
-        width: SCREEN_WIDTH,
+        // width: SCREEN_WIDTH,
         marginBottom: 1.5,
     },  
     assetSection: {
@@ -115,10 +115,11 @@ var styles = StyleSheet.create({
     midLine: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        marginBottom: 15,
     },
     bottomLine: {
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
     },
     topText: {
         fontSize: 20,

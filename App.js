@@ -38,6 +38,7 @@ const App = () => {
   return(
     
     <NavigationContainer>
+      
       <Header/>
       {/* <LinearGradient Gradient colors={['#201f2e', '#1F1E2D', '#171621']} style={styles.linearGradient}> */}
       <Tab.Navigator screenOptions={{
@@ -46,14 +47,14 @@ const App = () => {
         headerShown: false,
         tabBarStyle: {
           position: 'absolute',
-          bottom: 25,
-          left: 40,
-          right: 40,
+          bottom: 0,
+          left: 0,
+          right: 0,
           elevation: 0,
           backgroundColor: '#1F1E2D',
-          borderRadius: 15,
-          height: 60,
-          paddingVertical: 10,
+          // borderRadius: 15,
+          height: 80,
+          // paddingVertical: 10,
           flex:1,
           borderTopWidth: 0,
         }
