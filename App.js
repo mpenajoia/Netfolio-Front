@@ -58,7 +58,9 @@ const iconSize = 35;
           borderTopWidth: 0,
         }
       }}>
-            <Tab.Screen name="Portfolio" options={{
+            <Tab.Screen 
+            name="Portfolio" 
+            options={{
               tabBarIcon: (props) => <FeatherIcon style={{height:40, top: 10 }} color={props.color} size={iconSize} name="pie-chart"/>
             }}>
               {props => <Main {...props} getAssets={getAssets} assets={assets}/>}
