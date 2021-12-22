@@ -6,8 +6,74 @@ import EditAsset from './EditAsset';
 import FeatherIcon from 'react-native-vector-icons/Feather'
 import { Icon } from 'react-native-vector-icons/Icon';
 import LinearGradient from 'react-native-linear-gradient';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { GestureHandlerRootView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { SwipeListView } from 'react-native-swipe-list-view';
+
 
 const SCREEN_WIDTH = Dimensions.get('window').width
+
+// const COLORS = {
+//     red: '#cc0000',
+//     green: '#4cA64c',
+//     blue: '#4c4cff',
+//     white: '#fff',
+//     grey: '#ddd',
+//   };
+
+// const buttonIconSize = 24
+
+// const VisibleItem = props => {
+//     const { data } = props;
+//     return(
+//     <View style={[
+//         styles.rowFront,
+//         { height: 60, }
+//     ]}>
+//         <Text>{data.item.text}</Text>
+//     </View>
+//     )
+// }
+// const HiddenItemWithActions = props => {
+//     const { rightActionActivated, swipeAnimatedValue, data } = props;
+//     return (
+//     <View style={styles.rowBack}>
+//         <TouchableWithoutFeedback onPress={() => console.log('Touched')}>
+//             <View style={[
+//                 styles.backBtn,
+//                 styles.backRightBtn,
+//                 styles.backRightBtnLeft,
+//                 {
+//                     width: 60,
+//                 }
+//             ]}>
+//                 <View style={styles.backBtnInner}>
+//                     {/* <FeatherIcon color="#ffc219" name="edit-2" size={buttonIconSize} /> */}
+//                     <Text style={styles.backBtnText}>Right</Text>
+//                 </View>
+
+//             </View>
+//         </TouchableWithoutFeedback>
+//         <TouchableWithoutFeedback onPress={() => console.log('Touched')}>
+//             <View style={[
+//                 styles.backBtn,
+//                 styles.backRightBtn,
+//                 styles.backRightBtnRight,
+//                 {
+//                     width: 60,
+//                 }
+//             ]}>
+//                 <View style={styles.backBtnInner}>
+//                     {/* <FeatherIcon color="#ffc219" name="trash-2" size={buttonIconSize} /> */}
+//                     <Text style={styles.backBtnText}>Left</Text>
+//                 </View>
+
+//             </View>
+//         </TouchableWithoutFeedback>
+//     </View>
+//     )
+// } 
+
 
 
 const Asset = (props) => {
@@ -60,42 +126,82 @@ const Asset = (props) => {
         }
     }
     const buttonIconSize = 24
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    // const [list, setList] = useState(
+    //     [...new Array(20)].map((_, index) => ({
+    //         key: `${index}`,
+    //         text: `This is item number ${index}`
+    //     }))
+    // )
+
+    // const renderItem = (data, rowMap) => <VisibleItem data={data} rowMap={rowMap}/>
+    
+    // const renderHiddenItem = (data, rowMap) => <HiddenItemWithActions data={data} rowMap={rowMap}/>
+
+
+    
     return(
+        // <SwipeListView
+        //     data={list}
+        //     renderItem={renderItem}
+        //     renderHiddenItem={renderHiddenItem}
+        //     leftOpenValue={95}
+        //     rightOpenValue={-95}
+        // />
+
         <View style={styles.assetContainer} key={props.index}>
-                    <View style={styles.assetSection}>    
-                        {/* <Text> */}
-                            <View style={styles.topLine}>
-                                <Text style={styles.topText}>{sym}</Text>
-                                <Text style={styles.topText}>{name}</Text>
-                                <Text style={styles.topText}>{worth.toLocaleString('en-US', {
+                {/* <GestureHandlerRootView> */}
+                <View style={styles.assetSection}>    
+                    {/* <Text> */}
+                {/* <Swipeable > */}
+                        <View style={styles.topLine}>
+                            <Text style={styles.topText}>{sym}</Text>
+                            <Text style={styles.topText}>{name}</Text>
+                            <Text style={styles.topText}>{worth.toLocaleString('en-US', {
+                                style: 'currency',
+                                currency: 'USD'
+                            })}
+                            </Text>
+                        </View>
+                {/* </Swipeable> */}
+                        <View style={styles.midLine}>
+                            <Text style={styles.midText}>{cat}</Text>
+                            <Text style={styles.midText}>{qty}</Text>
+                            <Text style={[styles.midText, (gL > 0) ? styles.gain : styles.loss]}>{gL.toLocaleString('en-US', {
                                     style: 'currency',
                                     currency: 'USD'
                                 })}
-                                </Text>
-                            </View>
-                            <View style={styles.midLine}>
-                                <Text style={styles.midText}>{cat}</Text>
-                                <Text style={styles.midText}>{qty}</Text>
-                                <Text style={[styles.midText, (gL > 0) ? styles.gain : styles.loss]}>{gL.toLocaleString('en-US', {
-                                        style: 'currency',
-                                        currency: 'USD'
-                                    })}
-                                </Text>
-                            {/* {name}, {sym}, Inv:{invested}, Live:{live}, {cat}, QTY: {qty}, g/l : {gL} */}
-                            </View>
-                            {/* <View style={styles.bottomLine}>
-                            <FeatherIcon color="#ffc219" onPress={handleEditPop} name="edit-2" size={buttonIconSize} />
-                            <FeatherIcon color="#ffc219" onPress={onDelete} name="trash-2" size={buttonIconSize} />
-                            </View> */}
-                        {/* </Text> */}
-                    </View>
-            <Modal visible={editPop} animationType='slide'>
-                <LinearGradient Gradient colors={['#201f2e', '#1F1E2D', '#171621']} style={styles.linearGradient}>  
-                    <Text style={{textAlign: 'center', paddingTop: 60,}}>{name}</Text>
-                    <EditAsset setEditPop={setEditPop} getAssets={props.getAssets} name={name} ind={ind} cat={cat} qty={qty} sym={sym} invested={invested} live={live} id={id}/>
-                </LinearGradient>
-            </Modal>
-        </View>
+                            </Text>
+                        {/* {name}, {sym}, Inv:{invested}, Live:{live}, {cat}, QTY: {qty}, g/l : {gL} */}
+                        </View>
+                        {/* <View style={styles.bottomLine}>
+                        <FeatherIcon color="#ffc219" onPress={handleEditPop} name="edit-2" size={buttonIconSize} />
+                        <FeatherIcon color="#ffc219" onPress={onDelete} name="trash-2" size={buttonIconSize} />
+                        </View> */}
+                    {/* </Text> */}
+                </View>
+                {/* </GestureHandlerRootView> */}
+                <Modal visible={editPop} animationType='slide'>
+                    <LinearGradient Gradient colors={['#201f2e', '#1F1E2D', '#171621']} style={styles.linearGradient}>  
+                        <Text style={{textAlign: 'center', paddingTop: 60,}}>{name}</Text>
+                        <EditAsset setEditPop={setEditPop} getAssets={props.getAssets} name={name} ind={ind} cat={cat} qty={qty} sym={sym} invested={invested} live={live} id={id}/>
+                    </LinearGradient>
+                </Modal>
+            </View>
+        
+        
     )
 }
 
@@ -149,6 +255,55 @@ var styles = StyleSheet.create({
     loss: {
         color: '#FF4963',
     },
+
+
+    // rowFront: {
+    //     height: 60,
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    //     backgroundColor: COLORS.white,
+    //     borderBottomColor: COLORS.grey,
+    //     borderBottomWidth: 1,
+    //   },
+    //   rowBack: {
+    //     alignItems: 'center',
+    //     backgroundColor: COLORS.white,
+    //     flex: 1,
+    //     flexDirection: 'row',
+    //     justifyContent: 'space-between',
+    //   },
+    //   backBtn: {
+    //     position: 'absolute',
+    //     bottom: 0,
+    //     top: 0,
+    //     justifyContent: 'center',
+    //   },
+    //   backLeftBtn: {
+    //     alignItems: 'flex-end',
+    //     backgroundColor: COLORS.green,
+    //     paddingRight: 16,
+    //   },
+    //   backRightBtn: {
+    //     right: 0,
+    //     alignItems: 'flex-start',
+    //     paddingLeft: 12,
+    //   },
+    //   backRightBtnLeft: {
+    //     backgroundColor: COLORS.blue,
+    //   },
+    //   backRightBtnRight: {
+    //     backgroundColor: COLORS.red,
+    //   },
+    //   backBtnInner: {
+    //     alignItems: 'center',
+    //   },
+    //   backBtnText: {
+    //     color: 'black',
+    //     marginTop: 2,
+    //   },
+
+
+
   });
 
 export default Asset;

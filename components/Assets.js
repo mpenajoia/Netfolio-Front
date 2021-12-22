@@ -2,7 +2,16 @@ import React, { useState } from 'react';
 import {View, Text, StyleSheet, ScrollView, Modal} from 'react-native';
 import Asset from './Asset';
 
+import { SwipeListView } from 'react-native-swipe-list-view';
+
+
 const Assets = (props) => {
+
+    state = {
+        listViewData: []
+    }
+
+
     let netWorthArr = []
     let netWorth = 0
     let netInvestedArr = []
@@ -26,7 +35,7 @@ const Assets = (props) => {
         investedSum += netInvestedArr[i];
     }
     const gainLoss = (netWorth - investedSum)
-
+    console.log(props.assets)
     return(
         <View style={{paddingTop: 50}}>
             <View style={{alignItems: 'center', backgroundColor: 'transparent', }}>
@@ -59,9 +68,30 @@ const Assets = (props) => {
                 </View>
 
                 <View style={styles.assetsWrapper}>
-                    <ScrollView >
+                    {/* <ScrollView >
                         {assetsMap}
-                    </ScrollView>
+                    </ScrollView> */}
+
+        <SwipeListView
+            data={props.assets}
+            renderItem={ (data, rowMap) => (
+                <View style={styles.rowFront}>
+                    <Text style={{color: 'white', backgroundColor: 'grey'}}>I am {props.assets ? props.assets[0].symbol : 'Nope'} in a SwipeListView</Text>
+                </View>
+            )}
+            renderHiddenItem={ (data, rowMap) => (
+                <View style={styles.rowBack}>
+                    <Text>Left</Text>
+                    <Text>Right</Text>
+                </View>
+            )}
+            leftOpenValue={75}
+            rightOpenValue={-75}
+        />
+
+
+
+
                 </View>
             </View>
         </View>
