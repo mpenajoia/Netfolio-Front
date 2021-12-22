@@ -1,10 +1,7 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, Modal, Button} from 'react-native';
-import AddAsset from './AddAsset';
+import React  from 'react';
+import {View, Text, StyleSheet } from 'react-native';
 
 const Header = (props) => {
-
-
 
   return(
     <View style={styles.header}>
@@ -25,6 +22,5 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 });
-
 
 export default Header;

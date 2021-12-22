@@ -16,24 +16,24 @@ import Assets from './components/Assets';
 const Tab = createBottomTabNavigator();
 
 const App = () => {
-// Sate for GET data
-const [assets, setAssets] = useState();
-// GET
-const getAssets = async () => {
-  await fetch('http://localhost:4000/assets', {
-    method: 'GET'}
-  )
-  .then((res) => res.json())
-  .then((data) => setAssets(data))
-}
-// useEffect for API call
-useEffect(() => {
-  getAssets();
-}, [tabSwitch])
+  // Sate for GET data
+  const [assets, setAssets] = useState();
+  // GET
+  const getAssets = async () => {
+    await fetch('http://localhost:4000/assets', {
+      method: 'GET'}
+    )
+    .then((res) => res.json())
+    .then((data) => setAssets(data))
+  }
+  // useEffect for API call
+  useEffect(() => {
+    getAssets();
+  }, [tabSwitch])
 
-const [tabSwitch, setTabSwitch] = useState(false)
+  const [tabSwitch, setTabSwitch] = useState(false)
 
-const iconSize = 35;
+  const iconSize = 35;
 
   return(
     
@@ -81,7 +81,5 @@ var styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-
 
 export default App;
