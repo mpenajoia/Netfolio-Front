@@ -1,19 +1,12 @@
-import React , { useState} from 'react';
-import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
+import React  from 'react';
+import {View, TextInput, Button} from 'react-native';
 import { Formik } from 'formik';
 import { globalStyles } from '../styles/global';
-import LinearGradient from 'react-native-linear-gradient';
-
 
 const EditAsset = (props) => {
-    //set defaults/placeholders here
-    const editValues = {symbol: props.sym, name: props.name, qty: props.qty, invested: props.invested, category: props.cat, current: props.live}
-   
-
-    const [editedAsset, setEditedAsset] = useState()
-    
+    const editValues = {symbol: props.sym, name: props.name, qty: props.qty, invested: props.invested, category: props.cat, current: props.live}   
     const onEdit = async (asset) => {
-        await fetch(`http://localhost:4000/assets/${props.id}`, {
+        await fetch(`${props.api}${props.id}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json"
@@ -29,14 +22,11 @@ const EditAsset = (props) => {
         props.getAssets()
         props.setEditPop(false)
     }
-
     const handleX = () => {
-        // Fix this
         props.setEditPop(false)
     } 
 
     return(
-        // <LinearGradient Gradient colors={['#201f2e', '#1F1E2D', '#171621']} style={styles.linearGradient}>        
         <View style={{marginTop: 30}}>
             <Formik 
                 initialValues={editValues}
@@ -98,14 +88,7 @@ const EditAsset = (props) => {
 
             </Formik>
         </View>
-        // </LinearGradient>
     )
 }
-
-var styles = StyleSheet.create({
-    linearGradient: {
-      flex: 1,
-    },
-  });
 
 export default EditAsset;

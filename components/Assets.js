@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {View, Text, StyleSheet, ScrollView, Dimensions} from 'react-native';
 import Asset from './Asset';
 
 const SCREEN_WIDTH = Dimensions.get('window').width
-const SCREEN_HEIGHT = Dimensions.get('window').height
 
 const Assets = (props) => {
     let netWorthArr = []
@@ -14,28 +13,24 @@ const Assets = (props) => {
     if (props.assets){
         assetsMap = props.assets.map((item, index) => {
             netWorthArr.push(item.qty * item.current)
-            netInvestedArr.push(item.qty * item.invested)
+            netInvestedArr.push(item.invested)
             return(
-                <Asset gainLoss={gainLoss} key={index} getAssets={props.getAssets} setAssets={props.setAssets} assets={props.assets} index={index} item={item}/>
+                <Asset  api={props.api} gainLoss={gainLoss} key={index} getAssets={props.getAssets} setAssets={props.setAssets} assets={props.assets} index={index} item={item}/>
                 )
-                
             })
     }else{
         assetsMap = <Text>Map empty</Text>
     }
-    // determining net worth
     for(let i = 0; i < netWorthArr.length; i++){
         netWorth += netWorthArr[i],
         investedSum += netInvestedArr[i];
     }
     const gainLoss = (netWorth - investedSum)
-    console.log(assetsMap)
-    console.log(props.assets)
 
     return(
         <View style={{paddingTop: 10}}>
-            <View style={{alignItems: 'center', backgroundColor: 'transparent', }}>
-                <View>    
+            <View>
+                <View style={styles.assetsBold} >    
                     <Text style={styles.assetsBold}>Net Worth: 
                         <Text style={styles.assetsNumbers}> {netWorth.toLocaleString('en-US', {
                                         style: 'currency',
@@ -44,7 +39,7 @@ const Assets = (props) => {
                         </Text>
                     </Text>
                 </View>
-                <View >
+                <View style={styles.assetsBold} >
                     <Text style={styles.assetsBold} >Gain/Loss: 
                         <Text style={[(gainLoss > 0) ? styles.gain : styles.loss]} > {gainLoss.toLocaleString('en-US', {
                                         style: 'currency',
@@ -72,7 +67,6 @@ const Assets = (props) => {
     )
 }
 
-
 const styles = StyleSheet.create({
     assetsBold: {
       paddingVertical: 5,
@@ -94,9 +88,7 @@ const styles = StyleSheet.create({
     assetsWrapper: {
         marginVertical: 30,
         height: '80%',
-        // paddingBottom: 170,
     },
-
   });
 
 export default Assets;

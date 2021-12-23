@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import {View, Text, StyleSheet, Modal, Dimensions} from 'react-native';
+import {View, Text, StyleSheet, Modal} from 'react-native';
 import EditAsset from './EditAsset';
 import FeatherIcon from 'react-native-vector-icons/Feather'
 import LinearGradient from 'react-native-linear-gradient';
 
-const SCREEN_WIDTH = Dimensions.get('window').width
 
 const Asset = (props) => {
     const onDelete = async () => {
-        await fetch(`http://localhost:4000/assets/${id}`, {
+        await fetch(`${props.api}${id}`, {
             method: 'DELETE',
             })
             .then(data => {props.getAssets()})
@@ -87,19 +86,17 @@ const Asset = (props) => {
                 <Modal visible={editPop} animationType='slide'>
                     <LinearGradient Gradient colors={['#201f2e', '#1F1E2D', '#171621']} style={styles.linearGradient}>  
                         <Text style={{textAlign: 'center', paddingTop: 60,}}>{name}</Text>
-                        <EditAsset setEditPop={setEditPop} getAssets={props.getAssets} name={name} ind={ind} cat={cat} qty={qty} sym={sym} invested={invested} live={live} id={id}/>
+                        <EditAsset  api={props.api} setEditPop={setEditPop} getAssets={props.getAssets} name={name} ind={ind} cat={cat} qty={qty} sym={sym} invested={invested} live={live} id={id}/>
                     </LinearGradient>
                 </Modal>
             </View>
     )
 }
-
 var styles = StyleSheet.create({
     linearGradient: {
       flex: 1,
     },
     assetContainer: {
-        // width: SCREEN_WIDTH,
         marginBottom: 1.5,
     },  
     assetSection: {

@@ -11,7 +11,7 @@ const AddAsset = (props) => {
     const [addedAsset, setAddedAsset] = useState()
     
     const postAsset = async (asset) => {
-        await fetch('http://localhost:4000/assets', {
+        await fetch(props.api, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
