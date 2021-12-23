@@ -39,8 +39,8 @@ const Assets = (props) => {
                         </Text>
                     </Text>
                 </View>
-                <View style={styles.assetsBold} >
-                    <Text style={styles.assetsBold} >Gain/Loss: 
+                <View style={styles.assetsSec} >
+                    <Text style={styles.assetsSec} >Gain/Loss: 
                         <Text style={[(gainLoss > 0) ? styles.gain : styles.loss]} > {gainLoss.toLocaleString('en-US', {
                                         style: 'currency',
                                         currency: 'USD'
@@ -49,7 +49,7 @@ const Assets = (props) => {
                     </Text>
                 {/* </View>
                 <View> */}
-                    <Text style={styles.assetsBold} >Invested Total: 
+                    <Text style={styles.assetsSec} >Invested Total: 
                         <Text style={styles.assetsNumbers}> {investedSum.toLocaleString('en-US', {
                                         style: 'currency',
                                         currency: 'USD'
@@ -76,6 +76,14 @@ const styles = StyleSheet.create({
       fontWeight: '800',
       color: '#ffc219'
     },
+    assetsSec: {
+      paddingVertical: 0,
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: 20,
+      fontWeight: '800',
+      color: '#ffc219'
+    },
     assetsNumbers: {
         color: '#fff'
     },
@@ -87,7 +95,7 @@ const styles = StyleSheet.create({
     },
     assetsWrapper: {
         marginVertical: 30,
-        height: '80%',
+        height: 685,
     },
   });
 
