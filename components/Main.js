@@ -9,7 +9,7 @@ const Main = (props) => {
       }, [])
 
     return(
-        <LinearGradient Gradient colors={['#201f2e', '#1F1E2D', '#171621']} style={styles.linearGradient}>
+        <LinearGradient Gradient colors={['#201f2e', '#1F1E2D', '#171621']} style={{paddingBottom: 105}}>
         <View style={[styles.main]}>
             <Assets assets={props.assets} api={props.api} setAssets={props.setAssets} getAssets={props.getAssets}/>
         </View>
