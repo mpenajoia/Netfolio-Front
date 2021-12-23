@@ -11,6 +11,10 @@
 
 If you're like me and have multiple accounts with different brokerages for your stock investments and different exchanges/wallets for cryptocurrency assets then you know how cumbersome it can be to have to look in multiple applications for an idea of your entire net worth. Netfolio attempts to aid in organizing one's personal investments in one easy to read application. 
 
+
+## Frame Grab
+![ScreenShot](./planning/frame.png)
+
 ## User Story
 
 User will be able to input their stock or crypto asset name/symbol with the amount of shares/tokens they hold plus the amount in USD they invested in said asset. The App will display their holding's value as it related to today's price. User will have a bird's eye view of entire portfolio health. 
